@@ -33,3 +33,43 @@
     }
 
 ?>
+<hr>
+<h1>Nested Loop</h1>
+<?php
+    for($x=1; $x <=5; $x++) //display levels/rows
+    {
+        for($y=1; $y <=5; $y++) //display stars
+        {
+            echo "*";
+        }
+        echo "<br>";
+    }
+
+?>
+<hr>
+<?php
+    //outer loop
+    for($x = 1; $x<=7; $x++) //display levels/rows
+    {
+        //inner loop
+        for($y=1; $y <=$x; $y++) //display stars
+        {
+            echo "*";
+        }
+        echo "<br>";
+    }
+?>
+<hr>
+<?php
+    //outer loop
+    for($x = 1; $x<=5; $x++) //display levels/rows
+    {
+        //inner loop
+        for($y=1; $y <=$x; $y++) //display numbers
+        {
+            echo $y;
+        }
+        echo "<br>";
+    }
+
+?>
