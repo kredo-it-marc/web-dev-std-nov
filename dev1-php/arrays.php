@@ -56,3 +56,52 @@
         echo "<p>$color</p>";
     }
 ?>
+<hr>
+<h1>Associative Array</h1>
+<?php
+    //method 1
+    $person = ["name"=>"Nikko","age"=>25, "address"=>"Lapu-lapu City"];
+
+    //method 2
+    $book = array("title"=>"The adventures of Tom Sawyer", "author"=>"Mark Twain", "price"=>10);
+
+    //assigning individual values
+    $ages["Henry"] = 10;
+    $ages["Lance"] = 22;
+    $ages["Sakura"] = 16;
+
+    //displaying vlaues
+    // echo $array_name[key];
+    echo $person["name"],"<br>"; //Nikko
+    echo $person["age"],"<br>"; //25
+    echo $person["address"],"<br>"; //Lapu-lapu City
+
+    foreach($book as $key=>$value)
+    {
+        echo "<p>$key: $value</p>";
+    }
+?>
+<hr>
+<h1>2D Associative</h1>
+<?php
+    $market = [
+        "round" => ["fruit1"=>"Orange","fruit2"=>"Grapes"],
+        "yellow" => ["fruit3"=>"Banana", "fruit4"=>"Mango" ]
+    ];
+
+    // $array_name[sub_array][key]
+    echo $market["round"]["fruit1"],"<br>"; //Orange
+    echo $market["round"]["fruit2"],"<br>"; //Grapes
+    echo $market["yellow"]["fruit3"],"<br>"; //Banana
+    echo $market["yellow"]["fruit4"],"<br>"; //Mango
+  
+    foreach($market as $sub_array => $value_array)
+    {
+        echo "<h1>$sub_array</h1>";
+
+        foreach($value_array as $key => $value)
+        {
+            echo "<p>$value</p>";
+        }
+    }
+?>
