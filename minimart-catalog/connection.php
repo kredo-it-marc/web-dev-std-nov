@@ -2,8 +2,8 @@
     function dbConnect()
     {
         $server_name = "localhost";
-        $username = "marc"; //MAMP and XAMPP uses 'root'
-        $password = "password"; //MAMP uses 'root', XAMPP has no password, so you place ''
+        $username = "root"; //MAMP and XAMPP uses 'root'
+        $password = ""; //MAMP uses 'root', XAMPP has no password, so you place ''
         $dbname = "minimart_catalog";
     
         $conn = new mysqli($server_name, $username, $password, $dbname);
