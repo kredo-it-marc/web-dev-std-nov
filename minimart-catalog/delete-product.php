@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    include "connection.php";
+
+    $product_id = $_GET["product_id"];
+    $product_details = getProduct($product_id);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +15,18 @@
     <title>Minimart Catalog | Delete Product</title>
 </head>
 <body class="bg-light" style="min-height:100vh;">
+    <?php include "navbar.php"; ?>
     <div class="container py-5">
+        <?php
+            if(isset($_POST["btn_delete"]))
+            {
+                //INPUT
+                $prod_id = $_POST["product_id"];
+
+                //PROCESS
+                deleteProduct($prod_id);
+            }
+        ?>
         <div class="card w-50 mx-auto">
             <div class="card-body text-center">
                 <h1 class="display-1"><i class="fa-solid fa-triangle-exclamation text-danger"></i></h1>
@@ -31,3 +49,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php
+    function getProduct($product_id)
+    {
+        $conn = dbConnect();
+        $sql = "SELECT * FROM products WHERE id = $product_id";
+        return $conn->query($sql)->fetch_assoc();
+    }
+
+    function deleteProduct($product_id)
+    {
+        $conn = dbConnect();
+        $sql = "DELETE FROM products WHERE id = $product_id";
+
+        if($conn->query($sql))
+        {
+            header("Location: products.php");
+        }
+        else
+        {
+            echo "<div class='alert alert-danger w-50 mx-auto text-center mb-3'>Failed to delete the product. Kindly try again. <br><small>".$conn->error."</small></div>";
+        }
+    }
+?>
